@@ -29,9 +29,6 @@ class InMemoryBackend
   end
 
   def query(klass, selector)
-    p "KLASS - #{klass}"
-    p "SELECTOR - #{selector}"
-
     send "query_#{selector.class.name.underscore}", selector
   end
 
