@@ -7,8 +7,5 @@ class MyAdapter < InMemoryBackend
     customers.select do |customer|
       customer.name == q.name
     end
-    # all(Customer).select do |customer|
-    #   customer.activity_during? q.dates
-    # end
   end
 end
