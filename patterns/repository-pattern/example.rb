@@ -1,18 +1,20 @@
 require_relative 'customer_repo'
 
-Customer = Struct.new :name, :id
+class Customer < OpenStruct
+end
 
-c1 = Customer.new("Dave", "1")
+c1 = Customer.new(name: "Dave", id: "1")
 
 Repo.adapter = MyAdapter.new # creates the adapter
 
 Repo.create(c1)
 
 # CustomersWithName is a struct to represent a query object but it can be anything e.g. AR relation etc
-CustomersWithName = Struct.new :name
+class CustomersWithName < OpenStruct
+end
 
 # old way of queryint using the Repo class directly
-res = Repo.query(Customer, CustomersWithName.new("Dave"))
+res = Repo.query(Customer, CustomersWithName.new(name: "Dave"))
 
 p "Response is  - #{res}"
 
